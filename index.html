@@ -2528,30 +2528,13 @@
 document.getElementById('contact-form').addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent the default form submission
 
-    // Correctly gather the form data
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+    const formData = new FormData(event.target);
+    const payload = Object.fromEntries(formData.entries());
 
     // Replace with your actual API Gateway URL
     const apiURL = 'https://gdr53s69nh.execute-api.us-east-2.amazonaws.com/prod/contact';
-    
-    // Construct the payload
-    const payload = {
-        name: name,
-        phone: phone,
-        email: email,
-        message: message,
-        to: 'luckylaynestudio@gmail.com' // Replace with the recipient's email
-    };
-
-    console.log(payload);
-
-    console.log({body: JSON.stringify(payload)});
 
     try {
-        // Make the API call using fetch
         const response = await fetch(apiURL, {
             method: 'POST',
             headers: {
@@ -2560,7 +2543,6 @@ document.getElementById('contact-form').addEventListener('submit', async functio
             body: JSON.stringify(payload),
         });
 
-        // Parse and handle the response
         const result = await response.json();
         
         if (response.ok) {
@@ -2575,44 +2557,58 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 });
 
 
-// const form = document.getElementById("contact-form");
 
-// form.addEventListener("submit", async (e) => {
-//   e.preventDefault();
+// document.getElementById('contact-form').addEventListener('submit', async function(event) {
+//     event.preventDefault(); // Prevent the default form submission
 
-// console.log(form.elements['name'].value)
+//     // Correctly gather the form data
+//     const name = document.getElementById('name').value;
+//     const phone = document.getElementById('phone').value;
+//     const email = document.getElementById('email').value;
+//     const message = document.getElementById('message').value;
 
-//   const data = {
-//     name: form.elements["name"].value,
-//     phone: form.elements["phone"].value,
-//     email: form.elements["email"].value,
-//     message: form.elements["message"].value,
-//     to: "luckylaynestudio@gmail.com", // Replace with recipient's email
-//   };
+//     // Replace with your actual API Gateway URL
+//     const apiURL = 'https://gdr53s69nh.execute-api.us-east-2.amazonaws.com/prod/contact';
+    
+//     // Construct the payload
+//     const payload = {
+//         name: name,
+//         phone: phone,
+//         email: email,
+//         message: message,
+//         to: 'luckylaynestudio@gmail.com' // Replace with the recipient's email
+//     };
 
-//   console.log(data)
+//     console.log(payload);
 
-//   console.log("Parsed input:", { name, phone, email, message});
+//     console.log({body: JSON.stringify(payload)});
 
+//     try {
+//         // Make the API call using fetch
+//         const response = await fetch(apiURL, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify(payload),
+//         });
 
-//   try {
-//     const response = await fetch(
-//       "https://gdr53s69nh.execute-api.us-east-2.amazonaws.com/prod/contact",
-//       {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(data),
-//       }
-//     );
-
-//     const result = await response.json();
-//     alert(result.message);
-//   } catch (error) {
-//     alert("Failed to send email");
-//   }
+//         // Parse and handle the response
+//         const result = await response.json();
+        
+//         if (response.ok) {
+//             alert(result.message || 'Email sent successfully!'); // Display a success message
+//         } else {
+//             alert(result.message || 'Failed to send email.'); // Display an error message
+//         }
+//     } catch (error) {
+//         console.error('Error:', error);
+//         alert('Failed to send email. Please try again later.');
+//     }
 // });
+
+
+
 </script>
 
     </main>
