@@ -2546,6 +2546,10 @@ document.getElementById('contact-form').addEventListener('submit', async functio
         to: 'luckylaynestudio@gmail.com' // Replace with the recipient's email
     };
 
+    console.log(payload);
+
+    console.log({body: JSON.stringify(payload)});
+
     try {
         // Make the API call using fetch
         const response = await fetch(apiURL, {
