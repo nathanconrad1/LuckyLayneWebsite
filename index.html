@@ -2530,6 +2530,8 @@
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
+console.log(form.elements['name'].value)
+
   const data = {
     name: form.elements["name"].value,
     phone: form.elements["phone"].value,
@@ -2537,6 +2539,8 @@ form.addEventListener("submit", async (e) => {
     message: form.elements["message"].value,
     to: "luckylaynestudio@gmail.com", // Replace with recipient's email
   };
+
+  console.log(data)
 
   try {
     const response = await fetch(
