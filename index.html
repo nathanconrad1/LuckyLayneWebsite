@@ -2549,7 +2549,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
         const result = await response.json();
         
         if (response.ok) {
-            alert(result.message || 'Email sent successfully!'); // Display a success message
+          window.location.href = '/thankyou.html'; // Display a success message
         } else {
             alert(result.message || 'Failed to send email.'); // Display an error message
         }
