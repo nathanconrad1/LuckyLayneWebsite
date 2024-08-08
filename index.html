@@ -2542,6 +2542,9 @@ console.log(form.elements['name'].value)
 
   console.log(data)
 
+  console.log("Parsed input:", { name, phone, email, message, to });
+
+
   try {
     const response = await fetch(
       "https://gdr53s69nh.execute-api.us-east-2.amazonaws.com/prod/contact",
