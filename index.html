@@ -2532,6 +2532,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     const payload = Object.fromEntries(formData.entries());
 
     payload['to'] = 'luckylaynestudio@gmail.com';
+    payload['subject'] = 'Website Form Submission';
 
     // Replace with your actual API Gateway URL
     const apiURL = 'https://gdr53s69nh.execute-api.us-east-2.amazonaws.com/prod/contact';
