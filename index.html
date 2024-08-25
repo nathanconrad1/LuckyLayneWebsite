@@ -55,7 +55,10 @@
         <a href="index.html" class="logo d-flex align-items-center me-auto">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
-          <h1 class="sitename">Lucky Layne Studios</h1>
+          <!-- <h1 class="sitename">
+            
+          </h1> -->
+          <img src="assets/img/lucklaynepnpgtest.PNG">
         </a>
 
         <nav id="navmenu" class="navmenu">
@@ -136,7 +139,7 @@
           <div class="overlay"></div>
           <!-- Overlay for dimming effect -->
           <div class="content">
-            <h1>Grow Your Business with LL</h1>
+            <h1 style="color: white;">Grow Your Business with LL</h1>
             <div class="d-flex">
               <a href="#contact" class="btn-get-started">Contact Us</a>
             </div>
@@ -232,6 +235,7 @@
                 class="about-btn align-self-center align-self-xl-start"
                 ><span>Our Work</span> <i class="bi bi-chevron-right"></i
               ></a>
+              <img style="padding-top: 2em;" src="assets/img/team/group2cropped.jpg">
             </div>
 
             <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
@@ -1434,13 +1438,12 @@
       <!-- /Portfolio Section -->
 
       <!-- Team Section -->
-      <section id="team" class="team section">
+      <section id="team" class="team section light-background">
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
           <h2>Team</h2>
           <p>
-            Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
-            consectetur velit
+            Meet our dedicated team at Lucky Layne Studios
           </p>
         </div>
         <!-- End Section Title -->
@@ -1455,20 +1458,20 @@
               <div class="team-member">
                 <div class="member-img">
                   <img
-                    src="assets/img/team/team-1.jpg"
+                    src="assets/img/team/kolbie2.JPG"
                     class="img-fluid"
                     alt=""
                   />
-                  <div class="social">
+                  <!-- <div class="social">
                     <a href=""><i class="bi bi-twitter-x"></i></a>
                     <a href=""><i class="bi bi-facebook"></i></a>
                     <a href=""><i class="bi bi-instagram"></i></a>
                     <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="member-info">
-                  <h4>Walter White</h4>
-                  <span>Chief Executive Officer</span>
+                  <h4>Kolbie</h4>
+                  <span>Photographer</span>
                 </div>
               </div>
             </div>
@@ -1482,20 +1485,20 @@
               <div class="team-member">
                 <div class="member-img">
                   <img
-                    src="assets/img/team/team-2.jpg"
+                    src="assets/img/team/nate2.JPG"
                     class="img-fluid"
                     alt=""
                   />
-                  <div class="social">
+                  <!-- <div class="social">
                     <a href=""><i class="bi bi-twitter-x"></i></a>
                     <a href=""><i class="bi bi-facebook"></i></a>
                     <a href=""><i class="bi bi-instagram"></i></a>
                     <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="member-info">
-                  <h4>Sarah Jhonson</h4>
-                  <span>Product Manager</span>
+                  <h4>Nate</h4>
+                  <span>Web Developer</span>
                 </div>
               </div>
             </div>
@@ -1509,20 +1512,20 @@
               <div class="team-member">
                 <div class="member-img">
                   <img
-                    src="assets/img/team/team-3.jpg"
+                    src="assets/img/team/Mckay2.jpg"
                     class="img-fluid"
                     alt=""
                   />
-                  <div class="social">
+                  <!-- <div class="social">
                     <a href=""><i class="bi bi-twitter-x"></i></a>
                     <a href=""><i class="bi bi-facebook"></i></a>
                     <a href=""><i class="bi bi-instagram"></i></a>
                     <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="member-info">
-                  <h4>William Anderson</h4>
-                  <span>CTO</span>
+                  <h4>McKay</h4>
+                  <span>Marketing Specialist</span>
                 </div>
               </div>
             </div>
@@ -1536,20 +1539,20 @@
               <div class="team-member">
                 <div class="member-img">
                   <img
-                    src="assets/img/team/team-4.jpg"
+                    src="assets/img/team/ali2.jpg"
                     class="img-fluid"
                     alt=""
                   />
-                  <div class="social">
+                  <!-- <div class="social">
                     <a href=""><i class="bi bi-twitter-x"></i></a>
                     <a href=""><i class="bi bi-facebook"></i></a>
                     <a href=""><i class="bi bi-instagram"></i></a>
                     <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="member-info">
-                  <h4>Amanda Jepson</h4>
-                  <span>Accountant</span>
+                  <h4>Ali</h4>
+                  <span>Digital Art Designer</span>
                 </div>
               </div>
             </div>
@@ -2547,6 +2550,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
         });
 
         const result = await response.json();
+
         
         if (response.ok) {
           window.location.href = '/thankyou.html'; // Display a success message

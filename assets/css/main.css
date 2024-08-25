@@ -21,18 +21,18 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #222222; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #3498db; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --background-color: #314838; /* Background color for the entire website, including individual sections */
+  --default-color: #e5e5e5; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #232620; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #97a489; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #97a489; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #444444; /* The default color of the main navmenu links */
-  --nav-hover-color: #3498db; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-color: #e5e5e5; /* The default color of the main navmenu links */
+  --nav-hover-color: #97a489; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #444444; /* Used for navigation links of the dropdown items in the navigation menu. */
@@ -42,16 +42,16 @@
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f4fafd;
-  --surface-color: #ffffff;
+  --background-color: #e5e5e5;
+  --surface-color: #97a489;
 }
 
 .dark-background {
-  --background-color: #060606;
-  --default-color: #ffffff;
+  --background-color: #232620;
+  --default-color: #e5e5e5;
   --heading-color: #ffffff;
   --surface-color: #252525;
-  --contrast-color: #ffffff;
+  --contrast-color: #e3b15b;
 }
 
 /* Smooth scroll */
@@ -157,7 +157,7 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 36px;
+  max-height: 50px;
   margin-right: 8px;
 }
 
@@ -739,7 +739,7 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url("../img/hero-img.png") no-repeat center center;
+  background: url("../img/team/group.jpg") no-repeat center center;
   background-size: cover;
 }
 
@@ -904,7 +904,7 @@ section,
 
 .about .icon-box p {
   font-size: 15px;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  color: var(--default-color);
   margin-bottom: 0;
 }
 
@@ -946,6 +946,7 @@ section,
 # Services Section
 --------------------------------------------------------------*/
 .services .service-item {
+  color: var(--default-color);
   background-color: var(--surface-color);
   box-shadow: 0px 0 30px 0 rgba(0, 0, 0, 0.1);
   padding: 30px 30px;
@@ -1174,7 +1175,7 @@ section,
 
 .testimonials .testimonial-item .quote-icon-left,
 .testimonials .testimonial-item .quote-icon-right {
-  color: color-mix(in srgb, var(--accent-color), transparent 60%);
+  color: color-mix(in srgb, white, transparent 60%);
   font-size: 26px;
   line-height: 0;
 }
