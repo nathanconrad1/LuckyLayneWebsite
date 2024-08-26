@@ -837,6 +837,7 @@ section,
 --------------------------------------------------------------*/
 .clients {
   padding: 20px 0;
+  
 }
 
 .clients .client-logo {
@@ -861,6 +862,18 @@ section,
 .clients .swiper-slide {
   display: flex;
   justify-content: center;
+}
+
+.clients .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: var(--background-color);
+  opacity: 1;
+  border: 1px solid var(--accent-color);
+}
+
+.clients .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
 }
 
 .clients .client-logo img:hover {
