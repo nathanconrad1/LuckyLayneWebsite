@@ -20,6 +20,7 @@
     />
 
     <!-- Vendor CSS Files -->
+     
     <link
       href="assets/vendor/bootstrap/css/bootstrap.min.css"
       rel="stylesheet"
@@ -149,63 +150,78 @@
 
       <!-- /Hero Section -->
 
-      <!-- Clients Section -->
-      <section id="clients" class="clients section light-background">
-        <div class="container" data-aos="fade-up">
-          <div class="row gy-4">
-            <div class="col-xl-2 col-md-3 col-6 client-logo">
-              <img
-                src="assets/img/clients/Rosedon.jpg"
-                class="img-fluid"
-                alt=""
-              />
-            </div>
-            <!-- End Client Item -->
-
-            <div class="col-xl-2 col-md-3 col-6 client-logo">
-              <img
-                src="assets/img/clients/Scanz.jpg"
-                class="img-fluid"
-                alt=""
-              />
-            </div>
-            <!-- End Client Item -->
-
-            <div class="col-xl-2 col-md-3 col-6 client-logo">
-              <img
-                src="assets/img/clients/Huckleberry.jpg"
-                class="img-fluid"
-                alt=""
-              />
-            </div>
-            <!-- End Client Item -->
-
-            <div class="col-xl-2 col-md-3 col-6 client-logo">
-              <img src="assets/img/clients/sqb.jpg" class="img-fluid" alt="" />
-            </div>
-            <!-- End Client Item -->
-
-            <div class="col-xl-2 col-md-3 col-6 client-logo">
-              <img
-                src="assets/img/clients/client-5.png"
-                class="img-fluid"
-                alt=""
-              />
-            </div>
-            <!-- End Client Item -->
-
-            <div class="col-xl-2 col-md-3 col-6 client-logo">
-              <img
-                src="assets/img/clients/client-6.png"
-                class="img-fluid"
-                alt=""
-              />
-            </div>
-            <!-- End Client Item -->
+     <!-- Clients Section -->
+<section id="clients" class="clients section light-background">
+  <div class="container" data-aos="fade-up">
+    <div class="swiper init-swiper">
+      <script type="application/json" class="swiper-config">
+        {
+          "loop": true,
+          "speed": 600,
+          "autoplay": {
+            "delay": 3000
+          },
+          "slidesPerView": "auto",
+          "pagination": {
+            "el": ".swiper-pagination",
+            "type": "bullets",
+            "clickable": true
+          },
+          "breakpoints": {
+            "320": {
+              "slidesPerView": 2,
+              "spaceBetween": 10
+            },
+            "768": {
+              "slidesPerView": 3,
+              "spaceBetween": 20
+            },
+            "1200": {
+              "slidesPerView": 5,
+              "spaceBetween": 30
+            }
+          }
+        }
+      </script>
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="client-logo">
+            <img src="assets/img/clients/Rosedon.jpg" class="img-fluid" alt="" />
           </div>
         </div>
-      </section>
-      <!-- /Clients Section -->
+        <!-- Repeat for each client -->
+        <div class="swiper-slide">
+          <div class="client-logo">
+            <img src="assets/img/clients/Scanz.jpg" class="img-fluid" alt="" />
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="client-logo">
+            <img src="assets/img/clients/Huckleberry.jpg" class="img-fluid" alt="" />
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="client-logo">
+            <img src="assets/img/clients/sqb.jpg" class="img-fluid" alt="" />
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="client-logo">
+            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" />
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="client-logo">
+            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+<!-- /Clients Section -->
+
 
       <!-- About Section -->
       <section id="about" class="about section">
@@ -1442,9 +1458,9 @@
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
           <h2>Team</h2>
-          <p>
+          <h6>
             Meet our dedicated team at Lucky Layne Studios
-          </p>
+          </h6>
         </div>
         <!-- End Section Title -->
 
@@ -2657,6 +2673,8 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     <!-- Preloader -->
     <div id="preloader"></div>
 
+
+
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -2669,5 +2687,15 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const swipers = document.querySelectorAll('.init-swiper');
+      swipers.forEach(swiper => {
+        new Swiper(swiper, JSON.parse(swiper.querySelector('.swiper-config').innerText));
+      });
+    });
+</script>
+    
+    
   </body>
 </html>

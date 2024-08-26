@@ -157,7 +157,7 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 50px;
+  max-height: 75px;
   margin-right: 8px;
 }
 
@@ -188,6 +188,10 @@ h6 {
 @media (max-width: 1200px) {
   .header .logo {
     order: 1;
+  }
+
+  .header img {
+    height: 67px;
   }
 
   .header .btn-getstarted {
@@ -838,6 +842,15 @@ section,
   filter: grayscale(100);
 }
 
+.clients .swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+.clients .swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
 .clients .client-logo img:hover {
   filter: none;
   opacity: 1;
@@ -1443,7 +1456,7 @@ section,
 }
 
 .pricing h4 {
-  color: var(--accent-color);
+  color: var(--background-color);
   font-size: 48px;
   font-weight: 400;
   font-family: var(--heading-font);
