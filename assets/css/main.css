@@ -1167,6 +1167,10 @@ section,
   padding-left: 50px;
 }
 
+.test-header {
+  color: #232620;
+}
+
 .testimonials .testimonials-carousel,
 .testimonials .testimonials-slider {
   overflow: hidden;
