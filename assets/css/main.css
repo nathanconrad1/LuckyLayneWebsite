@@ -743,8 +743,18 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url("../img/widebanner.jpg") no-repeat center center;
-  background-size: cover;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 0; /* Make sure the video is behind the overlay and content */
 }
 
 .hero .overlay {
@@ -837,7 +847,6 @@ section,
 --------------------------------------------------------------*/
 .clients {
   padding: 20px 0;
-  
 }
 
 .clients .client-logo {
