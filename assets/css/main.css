@@ -52,7 +52,7 @@
   --default-color: #e5e5e5;
   --heading-color: #ffffff;
   --surface-color: #252525;
-  --contrast-color: #e3b15b;
+  --contrast-color: #97a489;
 }
 
 /* Smooth scroll */
@@ -640,7 +640,7 @@ section,
   position: relative;
 }
 
-.section-title h2:before,
+/* .section-title h2:before,
 .section-title h2:after {
   content: "";
   width: 50px;
@@ -655,7 +655,7 @@ section,
 
 .section-title h2:after {
   margin: 0 0 10px 15px;
-}
+} */
 
 .section-title p {
   margin-bottom: 0;
@@ -745,6 +745,10 @@ section,
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+.hero img {
+  width: 300px;
 }
 
 .hero-video {
@@ -1633,7 +1637,7 @@ section,
 # Contact Section
 --------------------------------------------------------------*/
 .contact {
-  background-image: url("../img/contact-bg.png");
+  /* background-image: url("../img/contact-bg.png"); */
   background-position: left center;
   background-repeat: no-repeat;
   position: relative;
@@ -1662,7 +1666,7 @@ section,
 
 .contact .info-item i {
   background: var(--accent-color);
-  color: var(--contrast-color);
+  /* color: var(--contrast-color); */
   font-size: 20px;
   width: 44px;
   height: 44px;
@@ -1724,7 +1728,8 @@ section,
 }
 
 .contact .php-email-form button[type="submit"] {
-  color: var(--contrast-color);
+  /* color: var(--contrast-color); */
+  color: white;
   background: var(--accent-color);
   border: 0;
   padding: 10px 30px;
@@ -1738,10 +1743,11 @@ section,
 
 .dropbut {
   font-size: 14px;
+  text-align: left;
   padding: 10px 15px;
   box-shadow: none;
   border-radius: 0;
-  color: var(--default-color);
+  color: white;
   background-color: color-mix(
     in srgb,
     var(--background-color),
