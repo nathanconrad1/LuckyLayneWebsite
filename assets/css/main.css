@@ -11,22 +11,22 @@
 # Help: https://bootstrapmade.com/color-system/
 --------------------------------------------------------------*/
 /* Fonts */
-:root {
+/* :root {
   --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --heading-font: "Raleway", sans-serif;
   --nav-font: "Poppins", sans-serif;
-}
+} */
 
 /* Fonts */
 :root {
-  --default-font: "Degular"; /* Update this if Degular is your default */
-  --heading-font: "Larken"; /* Update this if Larken is your heading font */
-  --nav-font: "Poppins", sans-serif; /* Leave this as is if unchanged */
+  --default-font: "Degular"; 
+  --heading-font: "Larken"; 
+  --nav-font: "Poppins", sans-serif; 
 }
 
-/* 
+
 @font-face {
   font-family: "Degular";
   src: url("/assets/fonts/Degular.otf") format("opentype"),
@@ -57,7 +57,7 @@
     url("/assets/fonts/Larken\ Italic.otf") format("opentype");
   font-weight: normal;
   font-style: italic;
-} */
+}
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
