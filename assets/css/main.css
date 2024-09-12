@@ -19,6 +19,46 @@
   --nav-font: "Poppins", sans-serif;
 }
 
+/* Fonts */
+:root {
+  --default-font: "Degular"; /* Update this if Degular is your default */
+  --heading-font: "Larken"; /* Update this if Larken is your heading font */
+  --nav-font: "Poppins", sans-serif; /* Leave this as is if unchanged */
+}
+
+/* 
+@font-face {
+  font-family: "Degular";
+  src: url("/assets/fonts/Degular.otf") format("opentype"),
+    url("/assets/fonts/Degular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Degular";
+  src: url("/assets/fonts/Degular\ Bold.otf") format("opentype"),
+    url("/assets/fonts/Degular\ Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Larken";
+  src: url("/assets/fonts/Larken.otf") format("opentype"),
+    url("/assets/fonts/Larken.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Larken";
+  src: url("/assets/fonts/Larken\ Italic.otf") format("opentype"),
+    url("/assets/fonts/Larken\ Italic.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
+} */
+
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
   --background-color: #314838; /* Background color for the entire website, including individual sections */
@@ -158,7 +198,7 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 75px;
+  max-height: 49px;
   margin-right: 8px;
 }
 
@@ -192,7 +232,7 @@ h6 {
   }
 
   .header img {
-    height: 67px;
+    height: 38px;
   }
 
   .header .btn-getstarted {
@@ -640,7 +680,7 @@ section,
   position: relative;
 }
 
-/* .section-title h2:before,
+.section-title h2:before,
 .section-title h2:after {
   content: "";
   width: 50px;
@@ -655,7 +695,7 @@ section,
 
 .section-title h2:after {
   margin: 0 0 10px 15px;
-} */
+}
 
 .section-title p {
   margin-bottom: 0;
@@ -748,8 +788,12 @@ section,
 }
 
 .hero img {
-  width: 300px;
+  width: 200px;
 }
+
+/* .hero .hero-logo img {
+  width: 30px;
+} */
 
 .hero-video {
   position: absolute;
@@ -781,7 +825,7 @@ section,
 
 .hero h1 {
   margin: 0;
-  font-size: 48px;
+  font-size: 42px;
   font-weight: 700;
   line-height: 56px;
 }
