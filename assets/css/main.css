@@ -895,7 +895,7 @@ section,
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url("../img/longtopBanner.jpg") no-repeat center center;
+    /* background: url("../img/longtopBanner.jpg") no-repeat center center; */
     background-size: cover;
   }
 
