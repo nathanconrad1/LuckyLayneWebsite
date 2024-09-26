@@ -811,7 +811,7 @@ section,
 }
 
 .hero img {
-  width: 235px;
+  width: 270px;
 }
 
 /* .hero .hero-logo img {
@@ -848,9 +848,9 @@ section,
 
 .hero h1 {
   margin: 0;
-  font-size: 38px;
+  font-size: 35px;
   font-weight: 700;
-  line-height: 56px;
+  line-height: 35px;
 }
 
 .hero p {
@@ -1017,7 +1017,7 @@ section,
 
 .about .icon-box h4 {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 400;
   margin: 0 0 10px 0;
 }
 
