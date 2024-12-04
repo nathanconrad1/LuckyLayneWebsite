@@ -2004,6 +2004,7 @@ section,
   padding: 1rem;
   text-align: center;
   background-color: var(--accent-color);
+  padding-bottom: 4rem;
 }
 
 .our-services-section h2 {
