@@ -677,7 +677,6 @@ section,
   section,
   .section {
     scroll-margin-top: 66px;
-    
   }
 }
 
@@ -2045,7 +2044,8 @@ section,
   flex-shrink: 0; /* Prevent slides from shrinking */
 }
 
-.text-box, .image-box {
+.text-box,
+.image-box {
   flex: 1;
   height: 100%; /* Equal height */
   display: flex;
@@ -2076,8 +2076,6 @@ section,
   padding: 0 2rem 0;
   text-align: left;
 }
-
-
 
 .btn-get-started {
   font-family: var(--default-font);
@@ -2115,7 +2113,7 @@ section,
 }
 
 /* Swiper navigation buttons */
-.our-services-section .swiper-button-prev, 
+.our-services-section .swiper-button-prev,
 .our-services-section .swiper-button-next {
   position: absolute;
   top: 50%; /* Center vertically */
@@ -2144,10 +2142,10 @@ section,
 /* Mobile responsiveness: stack image on top of text */
 /* Mobile responsiveness: adjust swiper-slide to fit content */
 @media (max-width: 768px) {
-
   .our-services-section {
     height: fit-content;
-  } 
+    margin: 0 1rem;
+  }
 
   .our-services-section .swiper-slide {
     flex-direction: column; /* Stack items vertically */
@@ -2155,7 +2153,8 @@ section,
     /* height: auto;  */
   }
 
-  .our-services-section .text-box, .image-box {
+  .our-services-section .text-box,
+  .image-box {
     width: 100%; /* Full width for both items */
     height: auto; /* Let height adjust automatically */
   }
@@ -2169,12 +2168,12 @@ section,
 
   .text-box p {
     text-align: center;
-    padding: 0 .5rem 0;
+    padding: 0 0.5rem 0;
   }
 
   .text-box h3 {
     margin: 0 0 7px;
-    padding: 0 2rem .5rem;
+    padding: 0 2rem 0.5rem;
   }
 
   .our-services-section .image-box img {
@@ -2189,7 +2188,7 @@ section,
   } */
 
   /* Adjust navigation buttons for better placement */
-  .our-services-section .swiper-button-prev, 
+  .our-services-section .swiper-button-prev,
   .our-services-section .swiper-button-next {
     top: auto; /* Remove vertical centering */
     bottom: 15px; /* Place arrows at the bottom */
@@ -2199,15 +2198,14 @@ section,
 
   .our-services-section .swiper-button-prev {
     left: 0%; /* Adjust distance from edge */
-    top: 50%
+    top: 50%;
   }
 
   .our-services-section .swiper-button-next {
     right: 0%; /* Adjust distance from edge */
-    top: 50%
+    top: 50%;
   }
 }
-
 
 /* Style for the dots (pagination) */
 .our-services-section .swiper-pagination-bullet {
@@ -2219,9 +2217,6 @@ section,
   background-color: var(--accent-color); /* Change active dot color */
   opacity: 1;
 }
-
-
-
 
 /* Section Styling */
 .our-goal-section {
@@ -2256,7 +2251,6 @@ section,
   font-size: 2.5rem; /* Adjust size for the larger title */
   color: var(--default-color); /* Dark color for contrast */
   margin-bottom: 2rem;
-  
 }
 
 .studio-info {
@@ -2276,7 +2270,7 @@ section,
   height: 100%;
   max-height: 25rem;
   object-fit: cover; /* Ensures the image covers the entire area */
-   /* Optional: adds rounded corners to the image */
+  /* Optional: adds rounded corners to the image */
 }
 
 /* Responsive design */
@@ -2286,7 +2280,8 @@ section,
     text-align: center;
   }
 
-  .text-side, .image-side {
+  .text-side,
+  .image-side {
     width: 100%; /* Make each side take full width on mobile */
     margin-bottom: 2rem; /* Space between sections */
   }
