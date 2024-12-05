@@ -883,7 +883,8 @@ section,
 .hero .d-flex {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  /* margin-top: 20px; */
+  padding: 0;
 }
 
 @media (max-width: 640px) {
