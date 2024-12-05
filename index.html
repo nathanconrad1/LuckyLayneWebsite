@@ -147,7 +147,7 @@
           <div class="overlay"></div>
           <!-- Overlay for dimming effect -->
           <div class="content">
-            <h1 style="color: white;">Grow Your Business with<br><span style="padding-top: 10px;" logo d-flex align-items-center me-auto><img class="hero-logo" src="assets/img/LL_Logo_Flat_White.png"></span></h1>
+            <h1 style="color: white;">Grow Your Business with<br><span style="display: inline-block; padding-top: 1rem;" logo d-flex align-items-center me-auto><img class="hero-logo" src="assets/img/LL_Logo_Flat_White.png"></span></h1>
             
             <div class="d-flex">
               <a href="#contact" class="btn-get-started">Contact Us</a>
@@ -320,7 +320,7 @@
           </div>
         </div>
         <div class="image-box">
-          <img src="assets/img/team/nate.JPG" alt="Service 1 Image">
+          <img src="assets/img/team/NateCoding.jpg" alt="Developer Coding">
         </div>
       </div>
 
@@ -345,6 +345,7 @@
     <!-- Swiper navigation buttons -->
     <div class="swiper-button-prev" style="font-size: 20px;"></div>
     <div class="swiper-button-next"></div>
+    <div class="swiper-pagination"></div>
   </div>
 </div>
 </section>
@@ -361,7 +362,13 @@ document.addEventListener('DOMContentLoaded', function () {
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
+      
     },
+    pagination: {
+            el: ".swiper-pagination",
+            type: "bullets",
+            clickable: true
+          },
   });
 });
 

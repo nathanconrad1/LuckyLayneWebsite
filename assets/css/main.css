@@ -2006,7 +2006,7 @@ section,
   text-align: center;
   background-color: var(--accent-color);
   padding-bottom: 5rem;
-  margin: 0 4rem;
+  margin: 0 3.6rem;
 }
 
 .d-back {
@@ -2207,15 +2207,23 @@ section,
   }
 }
 
-/* Style for the dots (pagination) */
-.our-services-section .swiper-pagination-bullet {
-  background-color: #fff;
-  opacity: 0.5;
+.swiper-pagination-bullet {
+  background-color: var(
+    --contrast-color
+  ); /* Default color for inactive bullets */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
 }
 
-.our-services-section .swiper-pagination-bullet-active {
-  background-color: var(--accent-color); /* Change active dot color */
-  opacity: 1;
+/* Active bullet styles */
+.swiper-pagination-bullet-active {
+  background-color: var(
+    --accent-color
+  ); /* Change this to your desired active color */
+  transform: scale(1.2); /* Optional: make the active bullet slightly larger */
 }
 
 /* Section Styling */
