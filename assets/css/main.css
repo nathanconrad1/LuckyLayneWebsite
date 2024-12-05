@@ -882,11 +882,12 @@ section,
   background: var(--accent-color);
 }
 
-.hero .d-flex {
+.hero .d-flex1 {
   display: flex;
+  align-items: center;
   justify-content: center;
   /* margin-top: 20px; */
-  padding: 0;
+  /* padding: 0; */
 }
 
 @media (max-width: 640px) {
