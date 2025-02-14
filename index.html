@@ -2841,11 +2841,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <script>
 document.getElementById('contact-form').addEventListener('submit', async function(event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); // Prevent default form submission
 
     const formData = new FormData(event.target);
     const payload = Object.fromEntries(formData.entries());
 
+    // Ensure the selected services are captured properly
+    const selectedServices = [];
+    document.querySelectorAll('#services-dropdown input[type="checkbox"]:checked').forEach(checkbox => {
+        selectedServices.push(checkbox.value);
+    });
+
+    // Add selected services to payload
+    payload['services'] = selectedServices.join(', '); // Convert array to string
+
+    // Ensure 'other_description' is included when "Other" is selected
+    const otherCheckbox = document.getElementById('other-checkbox');
+    if (otherCheckbox.checked) {
+        const otherDescription = document.getElementById('other-description').value.trim();
+        payload['other_description'] = otherDescription || "Not provided"; // Avoid blank values
+    }
+
+    // Ensure the email is correctly formatted
     payload['to'] = 'luckylaynestudio@gmail.com';
     payload['subject'] = 'Website Form Submission';
 
@@ -2863,69 +2880,16 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
         const result = await response.json();
 
-        
         if (response.ok) {
-          window.location.href = '/thankyou.html'; // Display a success message
+            window.location.href = '/thankyou.html'; // Redirect on success
         } else {
-            alert(result.message || 'Failed to send email.'); // Display an error message
+            alert(result.message || 'Failed to send email.'); // Display error
         }
     } catch (error) {
         console.error('Error:', error);
         alert('Failed to send email. Please try again later.');
     }
 });
-
-
-
-// document.getElementById('contact-form').addEventListener('submit', async function(event) {
-//     event.preventDefault(); // Prevent the default form submission
-
-//     // Correctly gather the form data
-//     const name = document.getElementById('name').value;
-//     const phone = document.getElementById('phone').value;
-//     const email = document.getElementById('email').value;
-//     const message = document.getElementById('message').value;
-
-//     // Replace with your actual API Gateway URL
-//     const apiURL = 'https://gdr53s69nh.execute-api.us-east-2.amazonaws.com/prod/contact';
-    
-//     // Construct the payload
-//     const payload = {
-//         name: name,
-//         phone: phone,
-//         email: email,
-//         message: message,
-//         to: 'luckylaynestudio@gmail.com' // Replace with the recipient's email
-//     };
-
-//     console.log(payload);
-
-//     console.log({body: JSON.stringify(payload)});
-
-//     try {
-//         // Make the API call using fetch
-//         const response = await fetch(apiURL, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(payload),
-//         });
-
-//         // Parse and handle the response
-//         const result = await response.json();
-        
-//         if (response.ok) {
-//             alert(result.message || 'Email sent successfully!'); // Display a success message
-//         } else {
-//             alert(result.message || 'Failed to send email.'); // Display an error message
-//         }
-//     } catch (error) {
-//         console.error('Error:', error);
-//         alert('Failed to send email. Please try again later.');
-//     }
-// });
-
 
 
 </script>
