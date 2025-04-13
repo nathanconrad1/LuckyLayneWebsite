@@ -56,7 +56,7 @@
       const prompt = `Analyze this company’s digital branding and suggest improvements:\n\n${document.getElementById('companyInfo').value}`;
 
       try {
-        const res = await fetch('https://9y9fgjgdwg.execute-api.us-east-2.amazonaws.com/prod/googleAI', {
+        const res = await fetch('https://9y9fgjgdwg.execute-api.us-east-2.amazonaws.com/prod/LLAI', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
