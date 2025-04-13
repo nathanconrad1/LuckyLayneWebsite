@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Digital Asset Evaluation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f4f4f4;
+    }
+    label {
+      font-weight: bold;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin: 0.5rem 0;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background: #222;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .response {
+      margin-top: 2rem;
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>AI Digital Asset Evaluation</h1>
+  <form id="evalForm">
+    <label for="companyInfo">Enter your company website, logo description, or digital asset info:</label>
+    <textarea id="companyInfo" placeholder="e.g. https://example.com — We use a modern serif logo and post on Instagram every week."></textarea>
+    <button type="submit">Analyze</button>
+  </form>
+
+  <div class="response" id="response"></div>
+
+  <script>
+    const form = document.getElementById('evalForm');
+    const responseBox = document.getElementById('response');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      responseBox.textContent = 'Analyzing...';
+
+      const prompt = `Analyze this company’s digital branding and suggest improvements:\n\n${document.getElementById('companyInfo').value}`;
+
+      try {
+        const res = await fetch('https://lwwgz7tzkd.execute-api.us-east-2.amazonaws.com/prod/evaluate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ prompt })
+        });
+
+        const data = await res.json();
+        responseBox.textContent = data.output || 'No response received.';
+      } catch (err) {
+        console.error(err);
+        responseBox.textContent = 'An error occurred. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>
