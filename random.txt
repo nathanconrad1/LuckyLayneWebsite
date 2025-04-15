@@ -1,0 +1,6 @@
+aws lambda publish-layer-version \
+  --layer-name gemini-ai-node \
+  --description "Gemini AI SDK for Node.js" \
+  --zip-file fileb://gemini-layer.zip \
+  --compatible-runtimes nodejs18.x \
+  --region us-east-2
