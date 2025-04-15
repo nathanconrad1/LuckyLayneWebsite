@@ -158,3 +158,20 @@
 </body>
 
 </html>
+
+zip -r node-layer.zip nodejs
+
+aws lambda publish-layer-version \
+  --layer-name node-layer \
+  --zip-file 
+  fileb://node-layer.zip
+  \
+   --compatible-runtimes nodejs18.x \
+   --description "Layer with node module"
+
+
+   aws lambda publish-layer-version \
+  --layer-name my-nodejs-layer \
+  --zip-file fileb://nodejs-layer.zip \
+  --compatible-runtimes nodejs18.x nodejs20.x \
+  --region us-east-2

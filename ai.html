@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Digital Asset Evaluation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f4f4f4;
+    }
+    label {
+      font-weight: bold;
+    }
+    textarea,
+    input {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background: #222;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .response {
+      margin-top: 2rem;
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>AI Digital Asset Evaluation</h1>
+  <form id="evalForm">
+    <label for="companyWebsite">Company Website:</label>
+    <input type="text" id="companyWebsite" placeholder="e.g. https://example.com" />
+
+    <label for="companyLogo">Logo Description:</label>
+    <input type="text" id="companyLogo" placeholder="e.g. Modern serif with abstract shapes" />
+
+    <label for="companyMedia">Media/Photo/Video Style:</label>
+    <input type="text" id="companyMedia" placeholder="e.g. Weekly Instagram posts with vibrant images" />
+
+    <label for="companyGoals">Company Goals:</label>
+    <input type="text" id="companyGoals" placeholder="e.g. Increase brand awareness and online sales" />
+
+    <button type="submit">Analyze</button>
+  </form>
+
+  <div class="response" id="response"></div>
+
+  <script>
+    const form = document.getElementById('evalForm');
+    const responseBox = document.getElementById('response');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      responseBox.textContent = 'Analyzing...';
+
+      const companyData = {
+        website: document.getElementById('companyWebsite').value,
+        logo: document.getElementById('companyLogo').value,
+        media: document.getElementById('companyMedia').value,
+        goals: document.getElementById('companyGoals').value
+      };
+
+      try {
+        const res = await fetch('https://9y9fgjgdwg.execute-api.us-east-2.amazonaws.com/prod/LLAI', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(companyData)
+        });
+
+        const data = await res.json();
+        responseBox.textContent = data.output || 'No response received.';
+      } catch (err) {
+        console.error(err);
+        responseBox.textContent = 'An error occurred. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>
