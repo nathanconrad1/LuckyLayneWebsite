@@ -45,15 +45,46 @@
   </head>
   <body>
     <style>
-      .input-box {
-        width: calc(100% - 40px); /* 20px padding on each side */
-        margin: 0 20px;
+      .chat-container {
+        max-width: 800px;
+        margin: 3rem auto;
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .chat-container h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .input-box,
+      #website,
+      #assets {
+        width: calc(100% - 40px);
+        margin: 10px 20px;
         padding: 12px;
         border-radius: 12px;
         border: 1px solid #ccc;
         font-size: 1rem;
         box-sizing: border-box;
         resize: vertical;
+      }
+
+      button {
+        display: block;
+        margin: 20px auto;
+        padding: 12px 24px;
+        border-radius: 8px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      button:hover {
+        background-color: #0056b3;
       }
 
       .response-box {
@@ -65,21 +96,7 @@
         font-size: 1rem;
         line-height: 1.6;
         white-space: pre-wrap;
-      }
-
-      button {
-        margin: 20px;
-        padding: 10px 20px;
-        border-radius: 8px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        cursor: pointer;
-        font-size: 1rem;
-      }
-
-      button:hover {
-        background-color: #0056b3;
+        color: black;
       }
 
       .response-box h1,
@@ -101,42 +118,99 @@
         font-family: monospace;
       }
     </style>
+
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-    <script>
-      async function sendPrompt() {
-        const userInput = document.getElementById("userInput").value;
-        const responseDiv = document.getElementById("response");
+    <div class="chat-container">
+      <h2>Ask for Business Growth Advice</h2>
 
-        responseDiv.textContent = "Thinking...";
+      <form id="growthForm">
+        <!-- Prompt -->
+        <textarea
+          class="input-box"
+          id="userInput"
+          name="prompt"
+          placeholder="Type your question..."
+        ></textarea>
 
-        try {
-          const res = await fetch(
-            "https://9y9fgjgdwg.execute-api.us-east-2.amazonaws.com/prod/LLAI",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ prompt: userInput }),
-            }
-          );
+        <!-- Website -->
+        <input
+          class="input-box"
+          type="url"
+          id="website"
+          name="website"
+          placeholder="Your Website URL (e.g. https://LuckyLayneStudio.com)"
+        />
 
-          const data = await res.json();
-          responseDiv.innerHTML = marked.parse(data.reply || "No response.");
-        } catch (err) {
-          responseDiv.textContent = "Error: " + err.message;
-        }
-      }
-    </script>
+        <label for="assets" style="margin: 10px 20px; font-weight: 500;">
+          Add your digital assets so the AI can assess them (e.g., photos, logos, or designs)
+        </label>
 
-    <div class="chat-container" style="flex: auto; align-content: center; overflow: hidden; padding-top: 3rem;">
-      <h2 style="display: block; text-align: center;">Ask for Business Growth Advice</h2>
-      <textarea class="response-box" style="align-self: center; width: 95%; margin-right: 5rem; padding-right: 5rem;" id="userInput" placeholder="Type your question..."></textarea>
-      <button style="display: block; align-self: center; margin-left: auto; margin-right: auto;" onclick="sendPrompt()">Send</button>
-      <div class="response-box" style="color: black;" id="response"></div>
+        <!-- Image Upload -->
+        <input
+          class="input-box"
+          type="file"
+          id="assets"
+          name="assets"
+          accept="image/*"
+          multiple
+        />
+
+        <!-- Submit Button -->
+        <button type="submit">Send</button>
+
+        <!-- Response -->
+        <div class="response-box" id="response"></div>
+      </form>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Script: Send form data -->
+    <script>
+      document
+        .getElementById("growthForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const responseDiv = document.getElementById("response");
+          responseDiv.textContent = "Thinking...";
+
+          const prompt = document.getElementById("userInput").value;
+          const website = document.getElementById("website").value;
+          const files = document.getElementById("assets").files;
+
+          const imagePromises = Array.from(files).map((file) => {
+            return new Promise((resolve, reject) => {
+              const reader = new FileReader();
+              reader.onload = () => {
+                const base64 = reader.result.split(",")[1];
+                resolve({ mimeType: file.type, data: base64 });
+              };
+              reader.onerror = reject;
+              reader.readAsDataURL(file);
+            });
+          });
+
+          try {
+            const images = await Promise.all(imagePromises);
+
+            const res = await fetch(
+              "https://9y9fgjgdwg.execute-api.us-east-2.amazonaws.com/prod/LLAI",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ prompt, website, images }),
+              }
+            );
+
+            const data = await res.json();
+            responseDiv.innerHTML = marked.parse(data.reply || "No response.");
+          } catch (err) {
+            responseDiv.textContent = "Error: " + err.message;
+          }
+        });
+    </script>
   </body>
 </html>
