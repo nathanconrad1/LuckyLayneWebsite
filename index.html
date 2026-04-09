@@ -2799,77 +2799,47 @@ document.addEventListener('DOMContentLoaded', function () {
       </section>
       <!-- /Contact Section -->
 
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const dropdownButton = document.getElementById("dropdownMenuButton");
-          const dropdownMenu = document.getElementById("services-dropdown");
-          const otherCheckbox = document.getElementById("other-checkbox");
-          const otherDescriptionContainer = document.getElementById(
-            "other-description-container"
-          );
-      
-          // Toggle dropdown visibility
-          dropdownButton.addEventListener("click", function (event) {
-            event.stopPropagation();
-            dropdownMenu.parentElement.classList.toggle("open");
-          });
-      
-          // Handle showing the "Other" description input box
-          otherCheckbox.addEventListener("change", function () {
-            if (this.checked) {
-              otherDescriptionContainer.style.display = "block";
-            } else {
-              otherDescriptionContainer.style.display = "none";
-            }
-          });
-      
-          // Hide dropdown when clicking outside of it
-          document.addEventListener("click", function () {
-            dropdownMenu.parentElement.classList.remove("open");
-          });
-      
-          // Prevent form submission when clicking inside dropdown
-          dropdownMenu.addEventListener("click", function (event) {
-            event.stopPropagation();
-          });
-        });
-      </script>
-      
-      
-      
-      
+<!-- Google reCAPTCHA v3 -->
+<script src="https://www.google.com/recaptcha/api.js?render=6Lc8I68sAAAAAH-iS93FTkE7Imca5veq1tOLE13T"></script>
 
 <script>
 document.getElementById('contact-form').addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent default form submission
 
-    const formData = new FormData(event.target);
-    const payload = Object.fromEntries(formData.entries());
-
-    // Ensure the selected services are captured properly
-    const selectedServices = [];
-    document.querySelectorAll('#services-dropdown input[type="checkbox"]:checked').forEach(checkbox => {
-        selectedServices.push(checkbox.value);
-    });
-
-    // Add selected services to payload
-    payload['services'] = selectedServices.join(', '); // Convert array to string
-
-    // Ensure 'other_description' is included when "Other" is selected
-    const otherCheckbox = document.getElementById('other-checkbox');
-    if (otherCheckbox.checked) {
-        const otherDescription = document.getElementById('other-description').value.trim();
-        payload['other_description'] = otherDescription || "Not provided"; // Avoid blank values
-    }
-
-    // Ensure the email is correctly formatted
-    payload['to'] = 'luckylaynestudio@gmail.com';
-    payload['subject'] = 'Website Form Submission';
-
-    // Replace with your actual API Gateway URL
-    const apiURL = 'https://gdr53s69nh.execute-api.us-east-2.amazonaws.com/prod/contact';
+    const siteKey = '6Lc8I68sAAAAAH-iS93FTkE7Imca5veq1tOLE13T';
 
     try {
+        // Ensure reCAPTCHA is ready
+        await new Promise(resolve => grecaptcha.ready(resolve));
+
+        // Generate the reCAPTCHA token
+        const token = await grecaptcha.execute(siteKey, { action: 'submit' });
+
+        const formData = new FormData(event.target);
+        const payload = Object.fromEntries(formData.entries());
+
+        // Capture selected services
+        const selectedServices = [];
+        document.querySelectorAll('#services-dropdown input[type="checkbox"]:checked').forEach(checkbox => {
+            selectedServices.push(checkbox.value);
+        });
+        payload['services'] = selectedServices.join(', ');
+
+        // Include "Other" description if selected
+        const otherCheckbox = document.getElementById('other-checkbox');
+        if (otherCheckbox.checked) {
+            const otherDescription = document.getElementById('other-description').value.trim();
+            payload['other_description'] = otherDescription || "Not provided";
+        }
+
+        // Add required fields
+        payload['to'] = 'luckylaynestudio@gmail.com';
+        payload['subject'] = 'Website Form Submission';
+        payload['recaptchaToken'] = token; // ✅ Include token
+
+        // API Gateway endpoint
+        const apiURL = 'https://gdr53s69nh.execute-api.us-east-2.amazonaws.com/prod/contact';
+
         const response = await fetch(apiURL, {
             method: 'POST',
             headers: {
@@ -2881,17 +2851,15 @@ document.getElementById('contact-form').addEventListener('submit', async functio
         const result = await response.json();
 
         if (response.ok) {
-            window.location.href = '/thankyou.html'; // Redirect on success
+            window.location.href = '/thankyou.html';
         } else {
-            alert(result.message || 'Failed to send email.'); // Display error
+            alert(result.message || 'Failed to send email.');
         }
     } catch (error) {
         console.error('Error:', error);
         alert('Failed to send email. Please try again later.');
     }
 });
-
-
 </script>
 
 
