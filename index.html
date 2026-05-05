@@ -2703,6 +2703,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         class="dropbut form-control dropdown-toggle"
                         type="button"
                         id="dropdownMenuButton"
+                        data-bs-toggle="dropdown"
+                        data-bs-auto-close="outside"
                         aria-expanded="false"
                       >
                         What services are you interested in?
@@ -2788,6 +2790,12 @@ document.addEventListener('DOMContentLoaded', function () {
                       Your message has been sent. Thank you!
                     </div> -->
 
+                    <p style="font-size: 11px; color: #888; margin: 8px 0;">
+                      This site is protected by reCAPTCHA and the Google
+                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and
+                      <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.
+                    </p>
+
                     <button type="submit">Send Message</button>
                   </div>
                 </div>
@@ -2801,8 +2809,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- Google reCAPTCHA v3 -->
 <script src="https://www.google.com/recaptcha/api.js?render=6Lc8I68sAAAAAH-iS93FTkE7Imca5veq1tOLE13T"></script>
+<style>.grecaptcha-badge { visibility: hidden !important; }</style>
 
 <script>
+// Show/hide the "Other" description input when the Other checkbox is toggled.
+(function() {
+    const otherCheckbox = document.getElementById('other-checkbox');
+    const otherContainer = document.getElementById('other-description-container');
+    if (otherCheckbox && otherContainer) {
+        otherCheckbox.addEventListener('change', function() {
+            otherContainer.style.display = this.checked ? '' : 'none';
+            if (!this.checked) {
+                document.getElementById('other-description').value = '';
+            }
+        });
+    }
+})();
+
 document.getElementById('contact-form').addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent default form submission
 
